@@ -1,11 +1,11 @@
 <?php
 
-	$voornaam		=	'Floor';
-	$familienaam	=	'Leemans';
+$fruit          =	'kokosnoot';
+$letterFruit	=	'o';
 
-	$volledigeNaam	=	$voornaam . ' ' . $familienaam;
+$lengteFruit	=	strlen($fruit);
 
-    $volledigeNaamLengte    =   strlen($volledigeNaam);
+$posFruit	    =	strpos($fruit, $letterFruit);
 
 ?>
 
@@ -20,10 +20,9 @@
         <link rel="author" href="humans.txt">
     </head>
     <body>
-        
-    	<h1><?= $volledigeNaam ?></h1>
-    	<p>Aantal karakters in de volledige naam: <?= $volledigeNaamLengte ?></p>
-
+    	<h1><?= $fruit ?></h1>
+        <p>Lengte van fruit: <?= $lengteFruit ?></p>
+        <p>Positie van eerste o in fruit: <?= $posFruit ?></p>
         <script src="js/main.js"></script>
     </body>
 </html>

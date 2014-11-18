@@ -1,12 +1,10 @@
 <?php
 
-	$voornaam		=	'Floor';
-	$familienaam	=	'Leemans';
+$lettertje	=	'e';
+$cijfertje	=	'3';
+$langsteWoord	=	'zandzeepsodemineralenwatersteenstralen';
 
-	$volledigeNaam	=	$voornaam . ' ' . $familienaam;
-
-    $volledigeNaamLengte    =   strlen($volledigeNaam);
-
+$langsteWoord3	=	str_replace($lettertje, $cijfertje, $langsteWoord);
 ?>
 
 <!doctype html>
@@ -20,10 +18,8 @@
         <link rel="author" href="humans.txt">
     </head>
     <body>
-        
-    	<h1><?= $volledigeNaam ?></h1>
-    	<p>Aantal karakters in de volledige naam: <?= $volledigeNaamLengte ?></p>
-
+    	<h1><?= $langsteWoord ?></h1>
+    	<p>'E' vervangen door '3': <?= $langsteWoord3 ?></p>
         <script src="js/main.js"></script>
     </body>
 </html>
