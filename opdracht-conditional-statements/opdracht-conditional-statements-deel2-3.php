@@ -36,6 +36,9 @@
     $posA	=   strrpos($day, 'A');
     $day_replace    =	substr_replace($day, 'a', $posA,1);
 
+    /* Er moet een 1 zijn omdat je dan zegt dat er maar 1 karakter mag vervangen worden van $posA, dus enkel de laatste a en niet bv 'ay'
+    */
+
 ?>
 
 <!doctype html>
