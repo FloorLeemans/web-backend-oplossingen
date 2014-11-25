@@ -7,7 +7,7 @@ $dierenCount	=	count($dieren);
 
 $teZoekenDier	=	'kat';
 
-if (in_array('kat', $dieren)) {
+if (in_array($teZoekenDier, $dieren)) {
     $antwoord = 'Ja, de ' . $teZoekenDier . ' is gevonden.';
 }
 else {
@@ -25,7 +25,6 @@ $zoogdieren = array('beer', 'leeuw', 'tijger');
 
 $dierenLijst =   array_merge($dieren, $zoogdieren);
 
-
 ?>
 
 <!doctype html>
@@ -33,8 +32,8 @@ $dierenLijst =   array_merge($dieren, $zoogdieren);
     <head>
         <meta charset="utf-8">
         <title>Opdracht array functies</title>
-
     </head>
+
     <body>
         <h1>Array functies - Deel 2</h1>
         <p>Array 'dieren':</p>

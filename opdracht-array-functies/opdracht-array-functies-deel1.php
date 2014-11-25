@@ -7,7 +7,7 @@ $dierenCount	=	count($dieren);
 
 $teZoekenDier	=	'kat';
 
-if (in_array('kat', $dieren)) {
+if (in_array($teZoekenDier, $dieren)) {
     $antwoord = 'Ja, de ' . $teZoekenDier . ' is gevonden.';
 }
 else {
@@ -21,8 +21,8 @@ else {
     <head>
         <meta charset="utf-8">
         <title>Opdracht array functies</title>
-
     </head>
+    
     <body>
         <h1>Array functies - Deel 1</h1>
         <p>Er zitten <?php echo $dierenCount ?> elementen in de array $dieren.</p>
