@@ -1,14 +1,34 @@
 <?php
 
+//file-name altijd als string ('') meegeven
 $text	=	file_get_contents('text-file.txt');
 
+//Elk karakter wordt apart in een array gezet
 $textChars	=	str_split($text);
 
+//Array gaan sorteren, eerst array kopiëren omdat de functie invloed heeft op de oorspronkelijke array, gesorteerd volgens ASCII-tabel
 $textSortZA	=	$textChars;
 rsort($textSortZA);
 
+//Gesorteerde array omdraaien, dus van A tot Z, heeft GEEN invloed op de oorspronkelijke array
 $textSortReverse	=	array_reverse($textSortZA);
+//var_dump (ord (' ')); geeft de plaats in de ASCII-tabel weer, dus hier: 32, want is 'space'
 
+/*
+$textChars  =   array()
+
+foreach($textSortReverse as $character)
+    {
+        if (isset($textChars[$character]))
+        {
+            ++$textChars[$character];
+        }
+        else
+        {
+            $textChars[$character] = 1;
+        }
+    }
+*/
 $teller =	array();
 
 foreach($textSortReverse as $value)
@@ -22,6 +42,8 @@ foreach($textSortReverse as $value)
 			$teller[$value] = 1;
 		}
 	}
+
+$aantalkarakters    =   count($teller);
 
 ?>
 
@@ -40,6 +62,8 @@ foreach($textSortReverse as $value)
 
         <h2>Lijst met alle karakters in de string 'text':</h2>
         <pre><?php var_dump($teller) ?></pre>
+
+        <p>In totaal kwamen er <?= $aantalkarakters ?> karakters voor.</p>
 
     </body>
 </html>
