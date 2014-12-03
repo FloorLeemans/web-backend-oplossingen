@@ -3,7 +3,7 @@
 $Hans 	=	array('geld' => 100000, 'rentevoet' => 8, 'jaren' => 10, 'counter' => 1, 'historiek' => array());
 $Leonie	=	array('geld' => 25000, 'rentevoet' => 3, 'jaren' => 5, 'counter' => 1, 'historiek' => array());
 
-function rentevoet($array)
+function kapitaal($array)
 {
 
 	if ($array['counter'] <= $array['jaren']) 
@@ -12,16 +12,16 @@ function rentevoet($array)
 		$array['geld'] = $array['geld'] + $rente;
 		$array['historiek'][] = "Na " . $array['counter'] . " jaar ontvang je aan een rentevoet van " . $array['rentevoet'] . "% een rente van " . floor($rente) . " euro en heb je in totaal " . floor($array['geld']) . " euro op de bank staan." . "<br>";
 		++$array['counter'];
-		return rentevoet($array);
+		return kapitaal($array);
 	}
 	else
-		{
+	{
 		return $array;
-		}
+	}
 }
 
-$geldHans = rentevoet($Hans);
-$geldLeonie	=	rentevoet($Leonie);
+$geldHans = kapitaal($Hans);
+$geldLeonie	=	kapitaal($Leonie);
 
 ?>
 
