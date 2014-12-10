@@ -44,12 +44,22 @@ $artikels	=	array(
 					);
 
 $artikelAlleen	=	false;
+$artikelNiet	=	false;
 
 if (isset($_GET['id'])) 
 {
-	$id 			=	$_GET['id'];
-	$artikels 		= 	array($artikels[$id]);
-	$artikelAlleen	=	true;
+	$id = $_GET['id'];
+
+	if (array_key_exists($id, $artikels)) 
+	{
+		$artikels 		= 	array($artikels[$id]);
+		$artikelAlleen	=	true;
+	}
+	
+	else
+	{
+		$artikelNiet	=	true;
+	}
 }
 
 ?>
@@ -58,25 +68,34 @@ if (isset($_GET['id']))
 <html>
     <head>
         <meta charset="utf-8">
-        <?php if (!$artikelAlleen): ?>
+        
+        <?php if ($artikelNiet): ?>
+        	<title>Het artikel bestaat niet</title>
+        <?php elseif (!$artikelAlleen): ?>
         	<title>De verzamelkrant</title>
-    		<?php else: ?>
-    			<title><?= $artikels[0]['titel'] ?></title>
+    	<?php else: ?>
+    		<title><?= $artikels[0]['titel'] ?></title>
     	<?php endif ?>
 
         <style>
 
+        body{
+        	margin:0;
+        }
+
         .overzicht {
         	float:left;
         	width:300px;
-        	margin:35px 25px;
+        	margin-left: 25px;
+        	margin-top: 55px;
         	padding:10px;
         	background-color: grey;
         }
 
         .artikel {
         	width:600px;
-        	margin:35px 25px;
+        	margin-top: 55px;
+        	margin-left: 25px;
         	background-color:grey;
         	padding:10px;
         }
@@ -96,25 +115,37 @@ if (isset($_GET['id']))
 
 		.titel {
 			font-size: 30px;
-			color:grey;
+			color: grey;
 			margin-left: 25px;
-			margin-top:10px;
-			margin-bottom:0px;
-			border-bottom:solid grey 2px;
+			margin-right: 25px;
+			margin-top: 20px;
+			margin-bottom: 0px;
+			border-bottom: solid grey 2px;
 			text-transform: uppercase;
+		}
+
+		.titel a {
+			text-decoration: none;
+			color:grey;
 		}
 
 		p {
 			font-size:14px;
 		}
 
+		.bestaatNiet{
+			color:grey;
+			margin-left:25px;
+			margin-top:55px;
+			font-size:16px;
+		}
 
 		a {
 			text-decoration: underline;
 			color:white;
 		}
 
-		a:hover {
+		p a:hover {
 			color:lightgrey;
 		}
 
@@ -134,26 +165,43 @@ if (isset($_GET['id']))
 			margin-bottom:10px;
 		}
 
+		form p {
+			float:right;
+			margin-right: 25px;
+			margin-top:15px;
+		}
+
         </style>
 
     </head>
     <body>
-    	<h1 class='titel'>De verzamelkrant</h1>
+    	<h1 class='titel'><a href="opdracht-get-uitbreiding.php">De verzamelkrant</a></h1>
+    	
+    	<form>
+    		<p><label for="search"></label>
+    		<input type="text" name="search">
+    		<input type="submit" value="Search" name="submit"></p>
+    	</form>
+
     	<!-- Je moet hier 'as $id => $value' zetten omdat je hier zo de $id definieert zodat $_GET weet uit welke array hij de keys moet halen -->
-	    <?php foreach ($artikels as $id => $value): ?>
-	        <div class="<?= (!$artikelAlleen) ? 'overzicht': 'artikel'; ?>">
-	        	<h1><?= $value["titel"] ?></h1>
-	        	<p><?= $value["datum"] ?></p>
-	        	<img src="<?= $value["afbeelding"] ?>" alt="<?= $value["afbeeldingBeschrijving"] ?>">
-	        	<!-- beter een nieuwe variabele maken zodat de functie niet in de html staat -->
-	        	<p><?= (!$artikelAlleen) ? mb_strimwidth($value['inhoud'],0,50,'...'): $value['inhoud']; ?></p>
-	        	<p class="right">
-	        		<?php if (!$artikelAlleen): ?>
-	        			<!--opdracht-get.php kan ook vervangen worden door $SERVER['PHP_SELF']-->
-	        			<a href="opdracht-get.php?id=<?= $id ?>">Lees meer ></a>
-	        		<?php endif ?>
-	        	</p>
-	        </div>
-	   	<?php endforeach ?>
+	    <?php if (!$artikelNiet): ?>
+		    <?php foreach ($artikels as $id => $value): ?>
+		        <div class="<?= (!$artikelAlleen) ? 'overzicht': 'artikel'; ?>">
+		        	<h1><?= $value["titel"] ?></h1>
+		        	<p><?= $value["datum"] ?></p>
+		        	<img src="<?= $value["afbeelding"] ?>" alt="<?= $value["afbeeldingBeschrijving"] ?>">
+		        	<!-- beter een nieuwe variabele maken zodat de functie niet in de html staat -->
+		        	<p><?= (!$artikelAlleen) ? mb_strimwidth($value['inhoud'],0,50,'...'): $value['inhoud']; ?></p>
+		        	<p class="right">
+		        		<?php if (!$artikelAlleen): ?>
+		        			<!--opdracht-get.php kan ook vervangen worden door $SERVER['PHP_SELF']-->
+		        			<a href="opdracht-get-uitbreiding.php?id=<?= $id ?>">Lees meer ></a>
+		        		<?php endif ?>
+		        	</p>
+		        </div>
+	   		<?php endforeach ?>
+	   	<?php else: ?>
+	   		<p class="bestaatNiet">Dit artikel bestaat niet.</p>
+	   	<?php endif ?>
     </body>
 </html>
