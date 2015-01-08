@@ -1,0 +1,35 @@
+body{
+	font-family: sans-serif;
+	color:#454545;
+}
+
+h1{
+	font-size: 32px;
+	font-weight:200;
+	margin: 0,25px;
+	border-bottom: 1px solid lightgrey;
+}
+
+ul{
+	margin-top: 15px;
+	list-style-type: square;
+}
+
+li{
+	margin-bottom: 12px;
+}
+
+a{
+	color: #454545;
+	text-decoration: underline;
+	cursor: auto;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+label{
+	display:block;
+	cursor:default;
+}

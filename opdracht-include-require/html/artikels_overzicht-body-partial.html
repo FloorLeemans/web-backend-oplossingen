@@ -1,0 +1,16 @@
+<section>
+        <h1>Nieuws</h1>
+        
+        <?php foreach ($artikels as $artikel): ?>
+                
+                <article>
+                	<h1><?= $artikel['title'] ?></h1>
+                	
+                        <p><?= $artikel['text'] ?></p>
+                	
+                        <p class="kern">Kernwoorden: <?= implode(', ', $artikel['tags']) ?></p>
+                </article>
+
+        <?php endforeach ?>
+
+</section>
