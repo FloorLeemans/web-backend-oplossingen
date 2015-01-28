@@ -8,16 +8,19 @@
 		$db = new PDO('mysql:host=localhost;dbname=bieren', 'root', 'root');
 
 		// Een query klaarmaken. 
-		$queryString = "SELECT `brnaam`, `brouwernr`
-							FROM `brouwers`";
+		$queryStringBrouwers = "SELECT 	brnaam, 
+										brouwernr
+								FROM 	brouwers";
 
-		$statementBrouwers = $db->prepare($queryString);
+		// Maakt een pdo-statement.
+		$statementBrouwers = $db->prepare($queryStringBrouwers);
 
 		// Een query uitvoeren.
 		$statementBrouwers->execute();
 
 		$brouwers = array();
 
+		// Alle resultaten uit de PDO-statement halen, zodat je dat niet in html moet doen
 		while ($row = $statementBrouwers->fetch(PDO::FETCH_ASSOC) )
 		{
 			$brouwers[]	=	$row;
@@ -27,12 +30,14 @@
 			// Een query klaarmaken met GET-variabele.
 			$brouwernr 	=	$_GET['brouwernr'];
 
-			$queryStringBier = 	'SELECT naam
-									FROM bieren 
-									WHERE bieren.brouwernr = :brouwernr';
+			// Om SQL-injectie te voorkomen schrijf je :brouwernr, want die herkent ':' niet
+			$queryStringBier = "SELECT 	naam
+								FROM 	bieren 
+								WHERE 	bieren.brouwernr = :brouwernr";
 
 			$statementBieren = $db->prepare($queryStringBier);
 
+			// SQL-statements worden hierdoor ge-escaped
 			$statementBieren->bindValue(':brouwernr', $_GET['brouwernr'] );
 
 			// Een query uitvoeren
@@ -40,6 +45,7 @@
 
 			$bieren = array();
 
+			// Resultaten
 			while ( $row = $statementBieren->fetch( PDO::FETCH_ASSOC ) )
 			{
 				$bieren[]	=	$row;
@@ -75,19 +81,22 @@
 
 		<h2>Overzicht van de bieren</h2>
 
-<!-- <?php echo $brouwers ?> -->
-
 		<!-- Formulier om brouwers mee op te zoeken -->
 		<form method="get" action="<?= $_SERVER['PHP_SELF'] ?>">
+			<label for="brouwernr">Selecteer brouwer</label>
 			<select name="brouwernr">
-				<?php foreach ($brouwers as $key => $brouwer): ?>
+				<?php foreach ($brouwers as $brouwer): ?>
 					<!-- Brouwernummer wordt de value, brouwernaam wordt getoond -->
-					<option value="<?= $brouwer['brouwernr']?>"><?= $brouwer['brnaam'] ?></option>
+					<option value="<?= $brouwer['brouwernr']?>" <?= ($brouwer['brouwernr'] === $brouwernr) ? 'selected' : '' ?>><?= $brouwer['brnaam'] ?></option>
 				<?php endforeach ?>
-				
 			</select>
+
 			<input type="submit" value="Geef mij alle bieren van deze brouwerij">
 		</form>
+
+		<!--
+		php-GET-variabele vermijden in html. beter met een variabele in php block werken met if-statement. Of variabele in php-block definiëren
+		-->
 
 		<?php if (isset($_GET['brouwernr'])): ?>
 
