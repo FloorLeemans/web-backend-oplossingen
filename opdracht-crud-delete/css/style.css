@@ -1,0 +1,50 @@
+body{
+    font-family: sans-serif;
+    color: #454545;
+}
+
+h1{
+	border-bottom: solid lightgrey 1px;
+}
+
+table{
+font-size:12px;
+overflow:auto;
+border-collapse: collapse;
+}
+
+thead{
+	background-color: #DFDFDF;
+	text-align: center;
+	font-weight: bold;
+}
+
+table th, table td{
+padding:4px;
+border: 1px solid lightgrey;
+}
+
+table th{
+background-color: #DFDFDF;
+text-align: center;
+}
+
+table tr{
+transition: all 0.2s ease-out;
+}
+
+table tr:hover{
+background-color:lightgreen;
+}
+
+.odd{
+background-color: #F1F1F1;
+}
+
+input{
+	width: 16px;
+	height: 16px;
+	background-image: url(http://oplossingen.web-backend.local/opdracht-crud-delete/img/icon-delete.png);
+	border: none;
+	text-indent: 20px;
+}
