@@ -1,7 +1,12 @@
 <?php
 
+$lifetime   =   60*60*24*30;
+
 // Sessie starten
 session_start();
+
+setcookie(session_name(),session_id(),time() + $lifetime);
+
 
 define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] );
 
