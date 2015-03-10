@@ -12,33 +12,28 @@ try
 	//De delete moet eerst gedaan worden, want als je eerst de database opvraagt, dan geeft hij niet meteen weer wat je hebt verwijderd en moet je eerst refreshen.
 	if (isset($_POST['delete'])) 
 	{
-		$confirmMessage 	=	"Bent u zeker dat u deze datarij wil verwijderen?";
-		$_POST
-
-		if (isset($_POST['confirm'])) {
-				
+		$deleteRow			=	$_POST['delete'];
+		$confirmMessage		=	"Bent u zeker dat u deze datarij wil verwijderen?";
+		
+		if (isset($_POST['confirm'])) 
+		{
 				$queryDelete 	=	"DELETE FROM brouwers
 									WHERE brouwernr = :brouwernr
 									LIMIT 1";
 
 				$statementDelete = $db->prepare($queryDelete);
 
-				$statementDelete->bindValue(':brouwernr', $_POST['confirm'] );
+				$statementDelete->bindValue(':brouwernr', $deleteRow );
 
 				$statementDelete->execute();
 
-				if (isset ($_POST['confirm'])) 
-				{
-					$message  	=	"De datarij werd goed verwijderd.";
-				}
-				else
-				{
-					$message 	=	"De datarij kon niet verwijderd worden. Probeer opnieuw.";
-				}
-
-		}	
-
-
+				$message  	=	"De datarij werd goed verwijderd.";
+		}
+		
+		elseif (isset($_POST['nope']))
+		{
+			$message 	=	"De datarij kon niet verwijderd worden. Probeer opnieuw.";
+		}
 	}
 
 	$queryStringBrouwers 	=	"SELECT * 
@@ -62,6 +57,11 @@ catch (PDOException $e)
 	$message	=	'Er ging iets mis: ' . $e->getMessage();
 }
 
+var_dump($_POST['delete']);
+var_dump($deleteRow);
+var_dump($_POST['confirm']);
+
+
 ?>
 
 <!doctype html>
@@ -76,11 +76,15 @@ catch (PDOException $e)
         
     	<h1>Overzicht van de bieren</h1>
 
-    	<form method="post" action="<?= BASE_URL ?>">
-    		<p class="error"><?= $confirmMessage ?></p>
-    		<input type="submit" value="<?= $brouwer['brouwernr'] ?>" name="confirm">
-    		<input type="submit" value="Ongedaan maken" name="nope">
-    	</form>
+    	<?php if (isset($_POST['delete'])): ?>
+	    	<form method="post" action="<?= BASE_URL ?>">
+	    		<p class="error"><?= $confirmMessage ?></p>
+	    		<input type="submit" value="Ja" name="confirm" class="confirm">
+	    		<input type="submit" value="Nee" name="nope" class="confirm">
+	    	</form>
+    	<?php endif ?>
+
+    	<?= $message ?>
 
     	<form method="post" action="<?= BASE_URL?>">
 	    	<table>

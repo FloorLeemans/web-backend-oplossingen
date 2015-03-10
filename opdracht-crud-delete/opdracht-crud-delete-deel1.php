@@ -64,13 +64,14 @@ catch (PDOException $e)
 
     <body>
         
-    	<h1>Overzicht van de bieren</h1>
+    	<h1>Overzicht van de brouwers</h1>
 
     	<form method="post" action="<?= BASE_URL?>">
 	    	<table>
 	    		<thead>
 	    			<tr>
 	    					<td>#</td>
+	    					<!--je kan de kolomnamen ook terugvinden met php door een fetchfields, die kan ook gebruikt worden als er bv nog geen resultaten zijn, dat kan met onderstaande methode niet-->
 	    				<?php foreach ($brouwers[0] as $key => $brouwer): ?>
 	    					<td><?= $key ?></td>
 	    				<?php endforeach ?>
