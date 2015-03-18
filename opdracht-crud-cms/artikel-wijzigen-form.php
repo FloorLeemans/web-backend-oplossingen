@@ -4,7 +4,10 @@ include_once('klasses/Database.php');
 
 session_start();
 
+unset($_SESSION['notification']);
+
 $cookieArray = explode(',', $_COOKIE['login']);
+$_SESSION['get'] = $_GET['artikel'];
 
 $db = new PDO('mysql:host=localhost;dbname=opdracht-crud-cms', 'root', 'root'); // Connectie maken
 
@@ -15,7 +18,7 @@ $updateShowQuery = 'SELECT artikels.id, artikels.titel, artikels.artikel, artike
 							FROM artikels
 							WHERE artikels.id = :id';
 
-$updateShowPlaceholders	=	array(':id' => $_GET['artikel']);
+$updateShowPlaceholders	=	array(':id' => $_SESSION['get']);
 
 $updateShowArray = $dbInstanceTemp->query( $updateShowQuery, $updateShowPlaceholders );
 $updateShowArray = $updateShowArray[0];
@@ -42,7 +45,8 @@ if (isset($_SESSION['artikelWijzigen']))
 
 }
 
-var_dump($updateShowArray);
+//var_dump($updateShowArray);
+//var_dump($_SESSION['get']);
 
 ?>
 
@@ -51,7 +55,7 @@ var_dump($updateShowArray);
 	<head>
 		<meta charset="utf-8">
 		<title>Wijzigen | Artikels</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
 		<p><a href="dashboard.php">Terug naar dashboard</a> | Ingelogd als <?= $cookieArray[0] ?> | <a href="logout.php">uitloggen</a></p>
@@ -63,7 +67,7 @@ var_dump($updateShowArray);
 			<p class="error"><?= $message ?></p>		
 		<?php endif ?>
 
-		<form method="POST" action="artikel-wijzigen.php">
+		<form method="POST" action="../artikel-wijzigen.php">
 			<input type="hidden" name="id" value="<?= $id ?>">
 
 			<label for="titel">Titel</label>

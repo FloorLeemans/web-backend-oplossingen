@@ -32,7 +32,7 @@ if (isset($_SESSION['notification']))
 	$message 	=	$_SESSION['notification'];
 }
 
-var_dump($artikelsArray);
+//var_dump($artikelsArray);
 
 ?>
 

@@ -4,6 +4,8 @@ include_once('klasses/Database.php');
 
 session_start();
 
+unset($_SESSION['notification']);
+
 $cookieTrue	=	false;
 
 if (!isset($_COOKIE['login'])) 

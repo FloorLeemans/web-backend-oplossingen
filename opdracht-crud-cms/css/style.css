@@ -18,11 +18,11 @@ label {
 	display: block;
 }
 
-input[name='submit'], input[name='login'], input[name='artikelToevoegen'] {
+input[name='submit'], input[name='login'], input[name='artikelToevoegen'], input[name='artikelWijzigen'] {
 	display: block;
 }
 
-input[name='titel'], textarea[name='artikel'], input[name='kernwoorden'], input[name='datum'] {
+input[name='titel'], textarea[name='artikel'], input[name='kernwoorden'], input[name='datum'], input[name='titel'], input[name='artikel'], input[name='kernwoorden'], input[name='datum'] {
 	padding: 6px;
 	width: 50%;
 	margin-bottom: 12px;

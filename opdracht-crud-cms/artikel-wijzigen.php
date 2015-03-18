@@ -1,5 +1,9 @@
 <?php
 
+include_once('klasses/Database.php');
+
+session_start();
+
 if (isset($_POST['artikelWijzigen']))
 {
 	$_SESSION['artikelWijzigen']['id']			=	$_POST['id'];

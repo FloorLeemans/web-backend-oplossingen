@@ -22,7 +22,7 @@ if (isset($_SESSION['notification']))
 	$message 	=	$_SESSION['notification'];
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 ?>
 
