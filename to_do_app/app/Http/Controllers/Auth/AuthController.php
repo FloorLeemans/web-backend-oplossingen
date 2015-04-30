@@ -34,6 +34,8 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
+		//\Session::flash('flash_message', 'Welkom.');
+
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
