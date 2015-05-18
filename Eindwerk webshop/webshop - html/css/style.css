@@ -1,0 +1,410 @@
+@font-face {
+    font-family: 'blueHighway';
+    src: url('../fonts/blue_highway-webfont.eot');
+    src: url('../fonts/blue_highway-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/blue_highway-webfont.woff2') format('woff2'),
+         url('../fonts/blue_highway-webfont.woff') format('woff'),
+         url('../fonts/blue_highway-webfont.ttf') format('truetype'),
+         url('../fonts/blue_highway-webfont.svg#blue_highwayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'blueHighway';
+    src: url('../fonts/blue_highway_bold-webfont.eot');
+    src: url('../fonts/blue_highway_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/blue_highway_bold-webfont.woff2') format('woff2'),
+         url('../fonts/blue_highway_bold-webfont.woff') format('woff'),
+         url('../fonts/blue_highway_bold-webfont.ttf') format('truetype'),
+         url('../fonts/blue_highway_bold-webfont.svg#blue_highwaybold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+html {
+	background: #002544;
+	/* Old Browsers */background: -moz-linear-gradient(-45deg, #002544 0%, #002544 33%, #01447a 100%);
+	/* FF3.6+ */background: -webkit-gradient(left top, right bottom, color-stop(0%, #002544), color-stop(33%, #002544), color-stop(100%, #01447a));
+	/* Chrome, Safari4+ */background: -webkit-linear-gradient(-45deg, #002544 0%, #002544 33%, #01447a 100%);
+	/* Chrome10+,Safari5.1+ */background: -o-linear-gradient(-45deg, #002544 0%, #002544 33%, #01447a 100%);
+	/* Opera 11.10+ */background: -ms-linear-gradient(-45deg, #002544 0%, #002544 33%, #01447a 100%);
+	/* IE 10+ */background: linear-gradient(135deg, #002544 0%, #002544 33%, #01447a 100%);
+	/* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002544', endColorstr='#01447a', GradientType=1 );
+	/* IE6-9 fallback on horizontal gradient */
+}
+
+body {
+	background-color: transparent;
+	font-family: 'blueHighway', fantasy;
+	color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+}
+
+header {
+	margin-top: 30px;
+}
+
+/*NAVIGATION LOGIN*/
+	.logo {
+		height: 40px;
+	}
+
+	nav.login {
+		font-size: 20px;
+		line-height: 20px;
+		text-transform: uppercase;
+		color: #ffffff;
+		text-align: right;
+	}
+
+	nav.login a {
+		font-family: 'blueHighway', fantasy;
+		color: #ffffff;
+	}
+
+	nav.login a:hover, nav.login a:focus {
+		text-decoration: none;
+		opacity: 0.7;
+	}
+
+	nav.login img {
+		height: 21px;
+	}
+
+/*NAVIGATION TOPNAV*/
+	.navbar-default {
+		background-color: #ffffff;
+		border-color: #ffffff;
+		margin-top: 30px;
+	}
+
+	.navbar-collapse {
+		padding: 0;
+	}
+
+	@media (min-width: 768px) {
+		.navbar {
+			border-radius: 0;
+		}
+	}
+
+	.navbar-default .navbar-nav li a {
+		font-family: 'blueHighway', fantasy;
+		font-size: 25px;
+		text-transform: uppercase;
+		color: #002544;
+	}
+
+	.navbar-default .navbar-nav li a:focus,
+	.navbar-default .navbar-nav li a:hover,
+	.navbar-default .navbar-nav>.active>a,
+	.navbar-default .navbar-nav>.active>a:focus,
+	.navbar-default .navbar-nav>.active>a:hover {
+		color: #ffffff;
+		background-color: #002544;
+	}
+
+	.form-control {
+		font-size: 18px;
+		color: #000000;
+		padding: 10px;
+		border-radius: 0;
+		outline: #01447a;
+	}
+
+	.form-control[type='placeholder'] {
+		color: #555;
+	}
+
+	.btn {
+		background-image: url('../img/search.png');
+		background-repeat: no-repeat;
+		background-color: transparent;
+		width: 32px;
+		height: 32px;
+		border: none;
+		padding: 0;
+		margin-right: 8px;
+	}
+
+	.btn:focus,
+	.btn:hover {
+		background-color: transparent;
+		opacity: 0.7;
+	}
+
+/*CAROUSEL*/
+	.carousel {
+		margin-bottom: 30px;
+	}
+
+	.carousel .carousel-control {
+		background-image: none;
+	}
+
+	.carousel-control .glyphicon-chevron-left,
+	.carousel-control .icon-prev {
+		left: 25%;
+	}
+
+	.carousel-control .glyphicon-chevron-right,
+	.carousel-control .icon-next {
+		right: 25%;
+	}
+
+	@media screen and (min-width: 768px) {
+		.carousel-indicators {
+			bottom: 0;
+		}
+	}
+
+/*TITEL*/
+	.titel {
+		height: 50px;
+		color: #002544;
+		background-color: #ffffff;
+		margin-bottom: 15px;
+	}
+
+	.titel h1 {
+		margin: 0;
+		padding: 7px 0 0 15px;
+	}
+
+/*FILMBOX*/
+	.filmbox {
+		margin-bottom: 30px;
+	}
+
+	.filmbox h2 {
+		font-size: 25px;
+		margin-top: 0;
+		height: 54px;
+	}
+
+	.filmbox p {
+		margin: 0;
+	}
+
+	.filmbox a:focus,
+	.filmbox a:hover {
+		text-decoration: none;
+	}
+
+	.filmbox .filmposter {
+		padding-right: 0;
+		height: 255px;
+	}
+
+	.soort {
+		height: 15px;
+		background-repeat: no-repeat;
+		margin-bottom: 15px;
+	}
+
+	.soort.dvd {
+		background-image: url('../img/dvd.png');
+	}
+
+	.soort.bluray {
+		background-image: url('../img/bluray.png');
+	}
+
+	.filmbox .prijs,
+	.filmbox .actieprijs {
+		font-size: 20px;
+	}
+
+	.filmbox .prijs.not {
+		font-size: 15px;
+		text-decoration: line-through;
+	}
+
+	.filmbox .none {
+		display: none;
+	}
+
+	.filmbox a .moreInfo {
+		font-size: 16px;
+		line-height: 16px;
+		text-transform: uppercase;
+		color: #ffffff;
+		margin-top: 10px;
+	}
+
+	.filmbox a .moreInfo:hover,
+	.filmbox a .moreInfo:hover {
+		text-decoration: underline;
+	}
+
+	.filmbox a .buttonWinkelmand {
+		font-size: 22px;
+		text-align: center;
+		text-transform: uppercase;
+		color: #002544;
+		background-color: #ffffff;
+		border: solid 1px #ffffff;
+		width: 100%;
+		margin-top: 15px;
+	}
+
+	.filmbox a .buttonWinkelmand:focus,
+	.filmbox a .buttonWinkelmand:hover {
+		color: #ffffff;
+		background-color: transparent;
+	}
+
+	.filmbox .col-md-4 {
+		position: absolute;
+		bottom: 48px;
+		right: 0;
+	}
+
+/*DETAIL*/
+	.banner {
+		height: 300px;
+		overflow: hidden;
+	}
+
+	.banner img {
+		width: 100%;
+	}
+
+	.posterDetail {
+		margin-bottom: 30px;
+	}
+
+	.posterDetail img {
+		width: 100%;
+	}
+
+	.details {
+		padding-top: 2px;
+	}
+
+	.details p {
+		font-size: 18px;
+		line-height: 19px;
+		font-weight: normal;
+	}
+
+	.details p a {
+		color: #ffffff;
+	}
+
+	.details .vet {
+		font-weight: 600;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	.prijsDetail {
+		color: #01447a;
+		background-color: #ffffff;
+	}
+
+	.prijsDetail .inner {
+		padding: 15px;
+	}
+
+	.prijsDetail p {
+		font-size: 15px;
+		line-height: 16px;
+		margin: 0;
+	}
+
+	.prijsDetail .prijs,
+	.prijsDetail .actieprijs {
+		font-size: 30px;
+		line-height: 31px;
+	}
+
+	.prijsDetail .prijs.not {
+		font-size: 25px;
+		line-height: 26px;
+		margin-bottom: 5px;
+		text-decoration: line-through;
+	}
+
+	.prijsDetail .none {
+		display: none;
+	}
+
+	.prijsDetail a .buttonWinkelmand {
+		font-size: 22px;
+		text-align: center;
+		text-transform: uppercase;
+		color: #ffffff;
+		background-color: #01447a;
+		border: solid 2px #01447a;
+		width: 100%;
+		padding: 15px;
+		margin-top: 15px;
+	}
+
+	.prijsDetail a:focus,
+	.prijsDetail a:hover {
+		text-decoration: none;
+	}
+
+	.prijsDetail a .buttonWinkelmand:focus,
+	.prijsDetail a .buttonWinkelmand:hover {
+		color: #01447a;
+		background-color: #ffffff;
+	}
+
+	.trailer {
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
+
+	.trailer h3 {
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+
+	.navWinkelmandje ul {
+		padding: 0;
+	}
+
+	.navWinkelmandje li a {
+		font-family: 'blueHighway', fantasy;
+		font-size: 25px;
+		text-transform: uppercase;
+		color: #002544;
+	}
+
+/*FOOTER*/
+
+	footer {
+		margin-bottom: 15px;
+	}
+
+	footer h3 {
+		margin-top: 15px;
+	}
+
+	footer a {
+		color: #ffffff;
+	}
+
+	footer a:focus,
+	footer a:hover {
+		color: #ffffff;
+	}
+
+	footer p {
+		font-size: 16px;
+		margin: 0;
+	}
+
+	.footerBottom {
+		padding: 0;
+		margin: 0 15px;
+		border-top: solid 2px #ffffff;
+		width: 1140px;
+	}
